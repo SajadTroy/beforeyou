@@ -5,6 +5,8 @@ const crypto = require('crypto');
 const User = require('../models/user');
 const scrapeInstagramProfile = require('../utils/scrapeInstagramProfile');
 const { send } = require('../email');
+const { fetchUserPosts } = require('../scripts/fetchPostsScheduler');
+const fetchInstagramPosts = require('../utils/fetchInstagramPosts');
 
 const { notAuthorized, isAuthorized } = require('../middleware/auth');
 
@@ -21,9 +23,6 @@ router.post('/register', isAuthorized, async (req, res) => {
     // Generate a random password
     const password = crypto.randomBytes(8).toString('hex');
 
-    // Encrypt the username
-    const hashedUsername = await bcrypt.hash(profileData.username, 10);
-
     if (!profileData || !profileData.username) {
       return res.status(400).send('Instagram profile not found or private');
     }
@@ -33,7 +32,7 @@ router.post('/register', isAuthorized, async (req, res) => {
       phone,
       instagram: {
         profile_name: profileData.name,
-        username: hashedUsername,
+        username: profileData.username,
         profile_url: profileData.profilePhoto,
       },
       password: await bcrypt.hash(password, 10)
