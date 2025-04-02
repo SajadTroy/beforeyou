@@ -20,6 +20,7 @@
     "colors": "^1.4.0",
     "cookie-session": "^2.1.0",
     "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
     "fs": "^0.0.1-security",
