@@ -58,4 +58,30 @@ router.post('/register', isAuthorized, async (req, res) => {
   }
 });
 
+router.get('/login', isAuthorized, (req, res) => {
+  res.render('user/login', { title: 'Login' });
+});
+
+router.post('/login', isAuthorized, async (req, res) => {
+  const { email, password } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(400).send('Invalid email or password');
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(400).send('Invalid email or password');
+    }
+
+    req.session.user = { id: user._id, email: user.email };
+    res.redirect('/'); // Redirect to the homepage or dashboard
+  } catch (error) {
+    console.error('Error logging in:', error.message);
+    res.status(500).send('An error occurred while logging in. Please try again.');
+  }
+});
+
 module.exports = router;

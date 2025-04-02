@@ -59,10 +59,6 @@ const indexRouter = require('./routes/index');
 
 app.use('/', indexRouter);
 
-app.get('/register', (req, res) => {
-  res.render('user/register', { title: 'Register' });
-});
-
 app.use((req, res) => {
     res.status(404).render('notfound', {
         title: '404 - Page Not Found',
