@@ -24,6 +24,10 @@ router.post('/register', isAuthorized, async (req, res) => {
     // Encrypt the username
     const hashedUsername = await bcrypt.hash(profileData.username, 10);
 
+    if (!profileData || !profileData.username) {
+      return res.status(400).send('Instagram profile not found or private');
+    }
+
     const newUser = new User({
       email,
       phone,
@@ -32,6 +36,7 @@ router.post('/register', isAuthorized, async (req, res) => {
         username: hashedUsername,
         profile_url: profileData.profilePhoto,
       },
+      password: await bcrypt.hash(password, 10)
     });
 
     await newUser.save();
