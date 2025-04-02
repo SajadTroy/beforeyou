@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const puppeteer = require('puppeteer');
 
+// GET /api/profile/:username - Scrape Instagram profile data
+// This endpoint scrapes the Instagram profile page for the given username and returns the profile data.
 router.get('/profile/:username', async (req, res) => {
   const { username } = req.params;
 
