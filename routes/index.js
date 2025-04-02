@@ -6,11 +6,13 @@ const User = require('../models/user');
 const scrapeInstagramProfile = require('../utils/scrapeInstagramProfile');
 const { send } = require('../email');
 
-router.get('/register', (req, res) => {
+const { notAuthorized, isAuthorized } = require('../middleware/auth');
+
+router.get('/register', isAuthorized, (req, res) => {
   res.render('user/register', { title: 'Register' });
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', isAuthorized, async (req, res) => {
   const { email, phone, instagram } = req.body;
 
   try {
