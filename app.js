@@ -56,10 +56,8 @@ app.use(cookieSession({
 app.use(express.static(path.join(__dirname, 'public')));
 
 const indexRouter = require('./routes/index');
-const API = require('./routes/api');
 
 app.use('/', indexRouter);
-app.use('/api', API);
 
 app.use((req, res) => {
     res.status(404).render('notfound', {

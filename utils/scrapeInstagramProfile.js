@@ -1,18 +1,12 @@
-const express = require('express');
-const router = express.Router();
 const puppeteer = require('puppeteer');
 
-// GET /api/profile/:username - Scrape Instagram profile data
-// This endpoint scrapes the Instagram profile page for the given username and returns the profile data.
-router.get('/profile/:username', async (req, res) => {
-  const { username } = req.params;
-
+async function scrapeInstagramProfile(username) {
   try {
     const browser = await puppeteer.launch({ headless: true });
     const page = await browser.newPage();
 
     await page.goto(`https://www.instagram.com/${username}/`, {
-      waitUntil: 'networkidle2', 
+      waitUntil: 'networkidle2',
     });
 
     await page.waitForSelector('img', { timeout: 5000 }).catch(() => {
@@ -26,9 +20,9 @@ router.get('/profile/:username', async (req, res) => {
 
       const [name, usernameWithAt] = title.split('(');
       const username = usernameWithAt?.replace('@', '').split(')')[0];
-      
+
       const profilePhotoElement = document.querySelector(`img[alt="${username}'s profile picture"]`);
-      
+
       return {
         name: name?.trim(),
         username: username?.trim(),
@@ -39,14 +33,14 @@ router.get('/profile/:username', async (req, res) => {
     await browser.close();
 
     if (!profileData || !profileData.username) {
-      return res.status(404).json({ error: 'Profile not found or private' });
+      throw new Error('Profile not found or private');
     }
 
-    res.json(profileData);
+    return profileData;
   } catch (error) {
     console.error('Error scraping Instagram profile:', error.message);
-    res.status(500).json({ error: 'Failed to fetch profile' });
+    throw new Error('Failed to fetch profile');
   }
-});
+}
 
-module.exports = router;
+module.exports = scrapeInstagramProfile;
