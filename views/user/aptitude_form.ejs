@@ -1,0 +1,80 @@
+<br><br>
+<link rel="stylesheet" href="/css/test-forms.css">
+<div class="aptitude-container">
+    <div class="rules-popup" id="rulesPopup">
+        <div class="rules-content">
+            <h3>Important Instructions</h3>
+            <div class="rules-text">
+                <ul>
+                    <li>Answer the question if you know; otherwise, ignore the question wisely.</li>
+                    <li>Performing any unfair means will render you liable to disqualification.</li>
+                    <li>This test is suggested only for knowing your talent and aptitude. There is no failure in the examination.</li>
+                </ul>
+            </div>
+            <button class="button button-primary" onclick="closeRulesPopup()">I Understand</button>
+        </div>
+    </div>
+    <div class="question-card">
+        <div class="form-header">
+            <h2>Aptitude Test Registration</h2>
+            <p>Please fill in your details to begin the aptitude test</p>
+        </div>
+
+        <form class="aptitude-form" action="/aptitude/test/register" method="POST">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="student[name]" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email_id">Email Address</label>
+                <input type="email" id="email_id" name="student[email_id]" required>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile">Mobile Number</label>
+                <input type="text" id="mobile" name="student[mobile]" required pattern="[0-9]{10}">
+            </div>
+
+            <div class="form-group">
+                <label for="stream">Select Stream</label>
+                <select id="stream" name="student[stream]" required>
+                    <option value="">Choose your stream</option>
+                    <option value="science">Computer Science</option>
+                    <option value="science">Biology Science</option>
+                    <option value="commerce">Commerce</option>
+                    <option value="humanities">Humanities</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="counsellor">Your Counsellor</label>
+                <select id="counsellor" name="student[counsellor]" required>
+                    <option value="">Choose your Counsellor</option>
+                    <option value="Jishila">Jishila</option>
+                    <option value="Ramshifa">Ramshifa</option>
+                    <option value="Afreeda">Afreeda</option>
+                    <option value="Huda">Huda</option>
+                    <option value="Afsal">Afsal</option>
+                    <option value="Iqbal">Iqbal</option>
+                    <option value="Pradeesh">Pradeesh</option>
+                    <option value="Jishma">Jishma</option>
+                    <option value="Bright Foundation">Bright Foundation</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>            
+
+            <div class="form-actions">
+                <button type="submit" class="button button-primary">
+                    <span class="button-text">Start Test</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    function closeRulesPopup() {
+        document.getElementById('rulesPopup').style.display = 'none';
+    }
+</script>

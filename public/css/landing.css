@@ -1,0 +1,144 @@
+.hero-section {
+    min-height: calc(100vh - 60px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                url('/images/pattern.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.hero-title {
+    font-size: 48px;
+    color: #000;
+    margin-bottom: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    font-family: "Ahrefs";
+}
+
+.hero-quote {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 40px;
+    line-height: 1.6;
+    font-family: "Ahrefs";
+    font-weight: 400;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.button {
+    width: 100%;
+    max-width: 250px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: "Ahrefs";
+}
+
+.button-primary {
+    background: #000;
+    color: #fff;
+}
+
+.button-primary:hover {
+    background: #333;
+    transform: translateY(-1px);
+    color: #fff;
+}
+
+.button-secondary {
+    background: #fff;
+    color: #000;
+    border: 2px solid #000;
+}
+
+.button-secondary:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    color: #000;
+}
+
+.button-icon {
+    font-size: 18px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 30px 15px;
+        min-height: calc(100vh - 60px);
+    }
+
+    .hero-title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .hero-quote {
+        font-size: 18px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .button {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-quote {
+        font-size: 16px;
+    }
+
+    .button {
+        padding: 12px 20px;
+    }
+}

@@ -1,0 +1,319 @@
+.question-header {
+    margin-bottom: 30px;
+}
+
+.progress-info {
+    text-align: center;
+}
+
+.question-count {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: #eee;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: #000;
+    transition: width 0.3s ease;
+}
+
+.question-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.question-text {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.options-grid {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.option-item {
+    position: relative;
+}
+
+.option-input {
+    display: none;
+}
+
+.option-label {
+    display: block;
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.option-label:hover {
+    background: #f1f3f5;
+    border-color: #000;
+}
+
+/* Style for previously selected answer */
+.option-label.selected {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+/* Maintain hover effect on selected answer */
+.option-label.selected:hover {
+    background: #333;
+    border-color: #333;
+}
+
+/* Add a subtle indicator for previously selected answer */
+.option-label.selected::after {
+    content: "Selected";
+    position: absolute;
+    right: 10px;
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.option-label.previously-selected {
+    background: #f8f9fa;
+    border-color: #000;
+    color: #333;
+}
+
+.option-label.previously-selected:hover {
+    background: #f1f3f5;
+}
+
+.selection-indicator {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    color: #666;
+    background: #e9ecef;
+    padding: 4px 8px;
+    border-radius: 12px;
+    opacity: 0.8;
+}
+
+/* Style for active/previously selected answer */
+.option-label.active {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+.option-label.active .selection-indicator {
+    background: #333;
+    color: #fff;
+}
+
+/* Maintain the active state even when hovering */
+.option-label.active:hover {
+    background: #333;
+    border-color: #333;
+    color: #fff;
+}
+
+/* Regular hover state for other options */
+.option-label:hover:not(.active) {
+    background: #f1f3f5;
+    border-color: #24bce4;
+}
+
+/* Currently selected option style */
+.option-input:checked + .option-label {
+    background: #24bce4;
+    border-color: #24bce4;
+    color: #fff;
+}
+
+.option-input:checked + .option-label .selection-indicator {
+    background: #244c64;
+    color: #fff;
+}
+
+/* Override the selected text when actually checked */
+.option-input:checked + .option-label::after {
+    content: "";
+}
+
+/* Add hover state for all options */
+.option-label:hover {
+    border-color: #24bce4;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.nav-button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: "Ahrefs";
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-button {
+    background: #f8f9fa;
+    color: #333;
+}
+
+.back-button:hover {
+    background: #e9ecef;
+    text-decoration: none;
+    color: #333;
+}
+
+.next-button {
+    background: #000;
+    color: #fff;
+}
+
+.next-button:hover {
+    background: #333;
+}
+
+/* New Progress Bar Styles */
+.test-progress {
+    background: #fff;
+    /* padding: 20px; */
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.progress-count {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.progress-count .current {
+    color: #000;
+}
+
+.progress-count .total {
+    color: #666;
+}
+
+.progress-label {
+    color: #666;
+    font-size: 14px;
+}
+
+.progress-bar-container {
+    position: relative;
+}
+
+.progress-bar-outer {
+    width: 100%;
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background: #000;
+    transition: width 0.3s ease;
+}
+
+.progress-markers {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+}
+
+.marker {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #eee;
+    transition: all 0.3s ease;
+}
+
+.marker.active {
+    background: #000;
+    transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+    .question-card {
+        padding: 20px;
+    }
+
+    .question-text {
+        font-size: 20px;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+    }
+
+    .nav-button {
+        width: 100%;
+    }
+
+    .selection-indicator {
+        position: static;
+        transform: none;
+        margin-top: 8px;
+        display: inline-block;
+    }
+    
+    .option-label {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .test-progress {
+        /* padding: 15px; */
+    }
+
+    .progress-count {
+        font-size: 20px;
+    }
+
+    .progress-markers {
+        display: none; /* Hide markers on mobile for cleaner look */
+    }
+}

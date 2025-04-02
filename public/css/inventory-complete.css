@@ -1,0 +1,140 @@
+.completion-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    margin-top: 70px; /* header height (60px) + smaller gap (10px) */
+}
+
+.assessment-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.assessment-header h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.assessment-header p {
+    color: #666;
+    font-size: 16px;
+}
+
+.categories-grid {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.category-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-2px);
+}
+
+.category-item label {
+    display: block;
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.range-input {
+    flex: 1;
+    height: 6px;
+    -webkit-appearance: none;
+    background: #eee;
+    border-radius: 3px;
+    outline: none;
+}
+
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.rating-value {
+    min-width: 30px;
+    padding: 4px 8px;
+    background: #000;
+    color: #fff;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.submit-button {
+    padding: 14px 30px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: "Ahrefs";
+}
+
+.submit-button:hover {
+    background: #333;
+}
+
+@media (max-width: 768px) {
+    .completion-card {
+        margin-top: 70px;
+        padding: 20px;
+    }
+
+    .assessment-header h1 {
+        font-size: 24px;
+    }
+
+    .category-item {
+        padding: 15px;
+    }
+
+    .category-item label {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    .range-input {
+        height: 4px;
+    }
+
+    .range-input::-webkit-slider-thumb {
+        width: 16px;
+        height: 16px;
+    }
+
+    .rating-value {
+        font-size: 12px;
+    }
+}

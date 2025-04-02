@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="/css/test-forms.css">
+<link rel="stylesheet" href="/css/inventory.css">
+
+<div class="aptitude-container">
+    <div class="question-card">
+        <div class="test-progress">
+            <div class="progress-stats">
+                <div class="progress-count">
+                    <span class="current">Page <%= currentPage + 1 %></span>
+                    <span class="total">/ <%= totalPages %></span>
+                </div>
+                <div class="progress-label">
+                    Questions <%= (currentPage * 10) + 1 %> - <%= Math.min((currentPage + 1) * 10, totalQuestions) %>
+                    of <%= totalQuestions %>
+                </div>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar-outer">
+                    <div class="progress-bar-inner" style="width: <%= ((currentPage + 1) / totalPages) * 100 %>%"></div>
+                </div>
+            </div>
+        </div>
+        <form action="/inventory/test/answer/<%= testId %>" method="POST" class="inventory-form">
+            <% if (questions && questions.length > 0) { %>
+                <div class="questions-grid">
+                    <% questions.forEach((question, index) => { %>
+                        <div class="question-item">
+                            <div class="question-number">Question <%= (currentPage * 10) + index + 1 %></div>
+                            <h3 class="question-text"><%= question.q_id.question %></h3>
+                            <div class="options-container">
+                                <div class="option-item">
+                                    <input type="radio" 
+                                           id="like_<%= index %>" 
+                                           name="answers[<%= index %>]" 
+                                           value="yes"
+                                           <%= question.answer === 'yes' ? 'checked' : '' %>>
+                                    <label for="like_<%= index %>" class="option-label">
+                                        <span class="emoji">👍</span>
+                                        <span class="option-text">Like</span>
+                                    </label>
+                                </div>
+                                <div class="option-item">
+                                    <input type="radio" 
+                                           id="dislike_<%= index %>" 
+                                           name="answers[<%= index %>]" 
+                                           value="no"
+                                           <%= question.answer === 'no' ? 'checked' : '' %>>
+                                    <label for="dislike_<%= index %>" class="option-label">
+                                        <span class="emoji">👎</span>
+                                        <span class="option-text">Dislike</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+
+                <input type="hidden" name="currentPage" value="<%= currentPage %>">
+                
+                <div class="navigation-buttons">
+                    <% if (currentPage > 0) { %>
+                        <a href="/inventory/test/pending/<%= testId %>?page=<%= currentPage - 1 %>" 
+                           class="nav-button back-button">Previous Page</a>
+                    <% } %>
+                    <button type="submit" class="nav-button next-button">
+                        <%= currentPage < totalPages - 1 ? 'Next Page' : 'Submit Test' %>
+                    </button>
+                </div>
+            <% } else { %>
+                <div class="error-message">No questions available.</div>
+            <% } %>
+        </form>
+    </div>
+</div>

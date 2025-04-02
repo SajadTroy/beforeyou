@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="/css/test-forms.css">
+<link rel="stylesheet" href="/css/inventory-complete.css">
+
+<div class="aptitude-container">
+    <div class="completion-card">
+        <div class="assessment-header">
+            <h1>Self Assessment Inventory</h1>
+            <p>Rate your interest level in each category from 0 to 10</p>
+        </div>
+
+        <form action="/self-estimation/test/<%= testId %>" method="post" id="assessmentForm" class="assessment-form">
+            <div class="categories-grid">
+                <div class="category-item">
+                    <label for="realistic">Realistic</label>
+                    <div class="rating-container">
+                        <input type="range" id="realistic" name="realistic" min="0" max="10" value="5"
+                               class="range-input" oninput="updateRating(this)">
+                        <div class="rating-value" id="realistic-value">5</div>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <label for="investigative">Investigative</label>
+                    <div class="rating-container">
+                        <input type="range" id="investigative" name="investigative" min="0" max="10" value="5"
+                               class="range-input" oninput="updateRating(this)">
+                        <div class="rating-value" id="investigative-value">5</div>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <label for="artistic">Artistic</label>
+                    <div class="rating-container">
+                        <input type="range" id="artistic" name="artistic" min="0" max="10" value="5"
+                               class="range-input" oninput="updateRating(this)">
+                        <div class="rating-value" id="artistic-value">5</div>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <label for="social">Social</label>
+                    <div class="rating-container">
+                        <input type="range" id="social" name="social" min="0" max="10" value="5"
+                               class="range-input" oninput="updateRating(this)">
+                        <div class="rating-value" id="social-value">5</div>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <label for="enterprising">Enterprising</label>
+                    <div class="rating-container">
+                        <input type="range" id="enterprising" name="enterprising" min="0" max="10" value="5"
+                               class="range-input" oninput="updateRating(this)">
+                        <div class="rating-value" id="enterprising-value">5</div>
+                    </div>
+                </div>
+
+                <div class="category-item">
+                    <label for="conventional">Conventional</label>
+                    <div class="rating-container">
+                        <input type="range" id="conventional" name="conventional" min="0" max="10" value="5"
+                               class="range-input" oninput="updateRating(this)">
+                        <div class="rating-value" id="conventional-value">5</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="submit-button">Complete Assessment</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function updateRating(input) {
+        const value = input.value;
+        document.getElementById(`${input.id}-value`).textContent = value;
+    }
+</script>

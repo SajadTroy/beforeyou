@@ -1,0 +1,956 @@
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css');
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-straight/css/uicons-bold-straight.css');
+@import url('https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-straight/css/uicons-regular-straight.css');
+
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: "Ahrefs";
+    src: url('/fonts/ahrefs-regular.ttf');
+}
+
+@font-face {
+    font-family: "Garamond";
+    src: url('/fonts/ITCGaramondStd-LtNarrowIta.otf');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Ahrefs";
+    font-size: 16px;
+    min-height: 130vh;
+}
+
+.admin-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-left h1 {
+    font-size: 20px;
+    color: #000;
+    font-weight: 600;
+    font-family: "Ahrefs";
+}
+
+.admin-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-item {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-family: "Ahrefs";
+}
+
+.nav-item:hover {
+    color: #000;
+    background: #f8f9fa;
+}
+
+.nav-item.logout {
+    color: #ff4444;
+}
+
+.nav-item.logout:hover {
+    background: #fff1f1;
+}
+
+.menu-toggle {
+    display: none;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+.menu-icon::before {
+    top: -8px;
+}
+
+.menu-icon::after {
+    bottom: -8px;
+}
+
+.menu-toggle.active .menu-icon {
+    background: transparent;
+}
+
+.menu-toggle.active .menu-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.menu-toggle.active .menu-icon::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+}
+
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease;
+}
+
+.mobile-menu.active {
+    transform: translateY(0);
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-main {
+    margin-top: 60px;
+    padding: 30px 20px;
+}
+
+@media (max-width: 768px) {
+    .admin-nav {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .header-container {
+        padding: 0 15px;
+    }
+
+    .header-left h1 {
+        font-size: 18px;
+    }
+
+    .admin-main {
+        padding: 20px 15px;
+    }
+}
+
+/* Dashboard card styles */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.dashboard-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: transform 0.3s ease;
+    font-family: "Ahrefs";
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+}
+
+.card-header {
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    font-family: "Ahrefs";
+}
+
+.card-value {
+    font-size: 24px;
+    color: #000;
+    font-weight: 600;
+    margin-top: 5px;
+    font-family: "Ahrefs";
+}
+
+.card-change {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+    font-family: "Ahrefs";
+}
+
+.positive {
+    color: #00c853;
+}
+
+.negative {
+    color: #ff4444;
+}
+
+/* New styles */
+.admin-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: "Ahrefs";
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-header h2 {
+    font-size: 24px;
+    color: #333;
+    font-family: "Ahrefs";
+}
+
+.questions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.question-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    font-family: "Ahrefs";
+}
+
+.question-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.category-tag {
+    background: #f8f9fa;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #666;
+    font-family: "Ahrefs";
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.icon-button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.icon-button:hover {
+    background: #f8f9fa;
+}
+
+.icon-button.edit:hover {
+    color: #000;
+}
+
+.icon-button.delete:hover {
+    color: #ff4444;
+}
+
+.question-text {
+    font-size: 15px;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    font-family: "Ahrefs";
+}
+
+.options-list {
+    display: grid;
+    gap: 8px;
+}
+
+.option {
+    padding: 8px 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #666;
+    font-family: "Ahrefs";
+}
+
+.option.correct {
+    background: #f1f7f3;
+    color: #00c853;
+    border: 1px solid #d3e5d5;
+    font-family: "Ahrefs";
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 90%;
+    font-family: "Ahrefs";
+}
+
+@media (max-width: 768px) {
+    .questions-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .modal-content {
+        padding: 20px;
+        width: calc(100% - 30px);
+    }
+}
+
+.tests-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.test-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    font-family: "Ahrefs";
+}
+
+.test-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.test-card.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #00c853;
+}
+
+.test-card.pending::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #ffa000;
+}
+
+.test-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.student-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    font-family: "Ahrefs";
+}
+
+.test-date {
+    font-size: 13px;
+    color: #666;
+    font-family: "Ahrefs";
+}
+
+.test-details {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Ahrefs";
+}
+
+.detail-item .label {
+    color: #666;
+    font-size: 14px;
+    font-family: "Ahrefs";
+}
+
+.detail-item .value {
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: "Ahrefs";
+}
+
+.value.completed {
+    color: #00c853;
+}
+
+.value.pending {
+    color: #ffa000;
+}
+
+.view-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: "Ahrefs";
+}
+
+.view-button:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.filter-controls {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-select {
+    padding: 8px 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+    background: #fff;
+    font-family: "Ahrefs";
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: "Ahrefs";
+}
+
+.status-badge.completed {
+    background: #f1f7f3;
+    color: #00c853;
+}
+
+.status-badge.pending {
+    background: #fff8e1;
+    color: #ffa000;
+}
+
+.student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .tests-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .test-card {
+        padding: 15px;
+    }
+
+    .student-name {
+        font-size: 15px;
+    }
+
+    .test-date {
+        font-size: 12px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .filter-controls {
+        width: 100%;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+}
+
+/* Add font family to specific text elements */
+.question-text,
+.option,
+.option.correct,
+.test-date,
+.detail-item .label,
+.detail-item .value,
+.category-tag,
+.status-badge,
+.dashboard-card,
+.page-header h2,
+.modal-content {
+    font-family: "Ahrefs";
+}
+
+/* Add to dashboard elements */
+.card-value,
+.card-change,
+.card-title {
+    font-family: "Ahrefs";
+}
+
+/* Add to form elements */
+input,
+select,
+textarea,
+button {
+    font-family: "Ahrefs";
+}
+
+/* Navigation items */
+.nav-item,
+.mobile-nav .nav-item {
+    font-family: "Ahrefs";
+}
+
+/* Headers and titles */
+h1, h2, h3, h4, h5, h6,
+.student-name {
+    font-family: "Ahrefs";
+}
+
+/* Test Detail Styles */
+.test-detail-container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.student-profile {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.student-profile h3 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.profile-info {
+    display: flex;
+    gap: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.score-summary {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.score-card {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.score-card h4 {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+}
+
+.percentage {
+    color: #4CAF50;
+    font-size: 14px;
+}
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.chart-wrapper {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.questions-review {
+    margin-top: 30px;
+}
+
+.question-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+}
+
+.question-item.correct {
+    background: #f1f7f3;
+    border-left: 4px solid #4CAF50;
+}
+
+.question-item.incorrect {
+    background: #fef2f2;
+    border-left: 4px solid #FF5252;
+}
+
+.question-number {
+    font-weight: 600;
+    color: #666;
+    min-width: 30px;
+}
+
+.answer-details {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.chosen-answer {
+    color: #666;
+}
+
+.correct-answer {
+    color: #4CAF50;
+}
+
+.print-button {
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.print-button:hover {
+    background: #000;
+}
+
+@media print {
+    .admin-header, 
+    .print-button,
+    #questionsSection {
+        display: none !important;
+    }
+    
+    .test-detail-container {
+        box-shadow: none;
+    }
+
+    .charts-container {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        margin-bottom: 20px;
+    }
+
+    .chart-wrapper {
+        break-inside: avoid;
+        page-break-inside: avoid;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto 20px;
+    }
+
+    .chart-wrapper img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    @page {
+        margin: 1cm;
+    }
+}
+
+/* ...existing code... */
+
+.options-list {
+    margin-top: 15px;
+    display: grid;
+    gap: 10px;
+}
+
+.option {
+    position: relative;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.option.correct {
+    background: #f1f7f3;
+    border: 1px solid #4CAF50;
+}
+
+.option.selected {
+    background: #fff8e1;
+    border: 1px solid #ffa000;
+}
+
+.option-badge {
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 10px;
+}
+
+.option-badge.correct {
+    background: #4CAF50;
+    color: white;
+}
+
+.option-badge.selected {
+    background: #ffa000;
+    color: white;
+}
+
+/* PDF Specific Styles */
+.pdf-container {
+    padding: 20px;
+    max-width: 210mm;
+    margin: 0 auto;
+    background: white;
+}
+
+.pdf-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.pdf-logo {
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.pdf-header h1 {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.student-info-pdf {
+    margin-bottom: 30px;
+}
+
+.student-info-pdf h2 {
+    color: #000;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    gap: 10px;
+}
+
+.info-item .label {
+    color: #666;
+    font-weight: 500;
+}
+
+.score-section-pdf {
+    margin-bottom: 30px;
+}
+
+.score-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.score-value {
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin: 10px 0;
+}
+
+.score-percentage {
+    color: #4CAF50;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.charts-section-pdf {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.chart-container {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+@media print {
+    .pdf-container {
+        padding: 0;
+    }
+}
+
+/* ...existing code... */

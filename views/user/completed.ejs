@@ -1,0 +1,64 @@
+<link rel="stylesheet" href="/css/test-forms.css">
+<link rel="stylesheet" href="/css/completion.css">
+
+<div class="aptitude-container">
+    <div class="completion-card">
+        <div class="completion-header">
+            <div class="completion-icon">
+                <svg width="64" height="64" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
+            <h1>Test Completed!</h1>
+            <p>Thank you for completing the aptitude test</p>
+        </div>
+
+        <!-- <div class="score-section">
+            <div class="total-score">
+                <div class="score-circle">
+                    <span class="score-value">
+                        <%= Math.round((totalScore/maxScore) * 100) %>%
+                    </span>
+                </div>
+                <span class="score-detail">
+                    <%= totalScore %> out of <%= maxScore %> points
+                </span>
+            </div>
+        </div> -->
+        <!-- <div class="category-scores">
+            <h2>Performance by Category</h2>
+            <div class="category-grid">
+                <% categoryPercentages.forEach(category=> { %>
+                    <div class="category-item">
+                        <div class="category-header">
+                            <span class="category-name">
+                                <%= category.category.replace(/_/g, ' ' ).toUpperCase() %>
+                            </span>
+                            <span class="category-score">
+                                <%= Math.round(category.percentage) %>%
+                            </span>
+                        </div>
+                        <div class="category-progress">
+                            <div class="progress-bar" style="width: <%= category.percentage %>%"></div>
+                        </div>
+                        <div class="category-details">
+                            <span class="correct-count">
+                                <%= category.correctAnswers %>
+                            </span> correct out of
+                            <span class="total-count">
+                                <%= category.totalQuestions %>
+                            </span> questions
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </div> -->
+
+        <div class="completion-actions">
+            <a href="/" class="home-button">Back to Home</a>
+            <a href="/inventory/test/form" class="next-test-button">Take Inventory Test</a>
+        </div>
+    </div>
+</div>
